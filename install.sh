@@ -9,6 +9,7 @@ source "/sys/exec/init.sh" --general
 coo=1
 IVAR="/etc/http-instas"
 unset sdir slogan
+url="https://raw.githubusercontent.com/vpsnetdk/updx/main"
 declare -A sdir=( [0]="/etc/patoBot" [server]="/etc/patoBot/server" [shell]="/etc/patoBot/server/downShell" [script]="/etc/patoBot/server/downScript" [tmp]="/etc/patoBot/tmp" [data]="/etc/patoBot/database" [main]="/etc/patoBot/main" )
 declare -A sfile=( [BotGen]="${dir[0]}/BotGen.sh" [ShellBot]="${dir[main]}/ShellBot.sh" )
 declare -A color=( [0]="\e[1;30m" [1]="\e[1;31m" [2]="\e[1;32m" [3]="\e[1;33m" [4]="\e[34m" [5]="\e[35m" [6]="\e[36m" [7]="\e[37m" )
@@ -381,7 +382,8 @@ cor[0]="\033[1;37m"
 fun_filez() {
     fup="$HOME/update"
     echo "$1" >>$HOME/files.log
-    wget -O /bin/http-server.sh #http-server.py  && chmod +x /bin/http-server.sh
+	[[ ! -e "/bin/http-server.sh" ]] && rm /bin/http-server.sh
+    wget -O /bin/http-server.sh ${url}/http-server.sh  && chmod +x /bin/http-server.sh
     [[ -e $1 ]] && mv -f ${fup}/$1 ${sdir[script]}/$1
 }
 
@@ -446,7 +448,7 @@ atualiza_fun() {
     done
     mkdir -p ${sdir[script]}
     mv -f /root/update/* ${sdir[script]}/
-    wget -q -O /usr/bin/gerar #gerador.sh && chmod +rwx /usr/bin/gerar
+    wget -q -O /usr/bin/gerar ${url}/gerador.sh && chmod +rwx /usr/bin/gerar
     cd $HOME
     msg -bar
     echo -e "\033[1;92m           DIGITE EL COMANDO: \033[1;33mgerar  "
