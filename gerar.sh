@@ -8,7 +8,7 @@
         declare -A sfile=( [BotGen]="${dir[0]}/BotGen.sh" [ShellBot]="${dir[main]}/ShellBot.sh" [main]="/bin/patobot" )
         declare -A color=( [0]="\e[1;30m" [1]="\e[1;31m" [2]="\e[1;32m" [3]="\e[1;33m" [4]="\e[34m" [5]="\e[35m" [6]="\e[36m" [7]="\e[37m" )
 
-[[ ! -e ${sfile[main]} ]] && wget -O ${sfile[main]} ${url}/main.sh &> /dev/null && chmod +rwx ${sfile[main]}
+[[ ! -e ${sfile[main]} ]] && wget -O ${sfile[main]} ${url}/main.sh &> /dev/null && chmod +rwx ${sfile[main]} && ln -s ${sfile[main]} "/sys/exec/init.sh"
 [[ -e /etc/newadm-instalacao ]] && rm /etc/newadm-instalacao
 
 tittle() {
@@ -606,7 +606,7 @@ bot_menu() {
     ) && echo -e "\033[1;32m [OK]" || echo -e "\033[1;31m [FAIL]"
     rm -rf /etc/ADM-db
     CIDdir=/etc/ADM-db && [[ ! -d ${CIDdir} ]] && mkdir ${CIDdir}
-    [[ ! -e "${CIDdir}/confbot.sh" ]] && wget --no-check-certificate -O ${CIDdir}/confbot.sh https://raw.githubusercontent.com/NetVPS/Generador-BOT/main/Code-BOT-General/intBOT.sh &>/dev/null && chmod +rwx ${CIDdir}/confbot.sh
+    [[ ! -e "${CIDdir}/confbot.sh" ]] && wget --no-check-certificate -O ${CIDdir}/confbot.sh ${url}/intBOT.sh &>/dev/null && chmod +rwx ${CIDdir}/confbot.sh
     sed -i -e 's/\r$//' ${CIDdir}/confbot.sh
     source ${CIDdir}/confbot.sh && rm -f ${CIDdir}/confbot.sh
     bot_conf
@@ -822,5 +822,6 @@ while :; do
     9) att_gen_key ;;
     10) bot_menu ;;
     11) alter_id ;;
+    12)mudar_instalacao ;;
     esac
 done

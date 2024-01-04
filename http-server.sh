@@ -1,7 +1,8 @@
 #!/bin/bash
+source "/sys/exec/init.sh" --general
 IVAR="/etc/http-instas"
 onliCHECK=/var/www/html/drowkid01
-LIST="$(echo "NewVPS-" | rev)"
+LIST="$(echo "lista-arq" | rev)"
 [[ -d /var/www/html/drowkid01 ]] || mkdir ${onliCHECK}
 install_fun () {
 apt-get install netcat -y
