@@ -81,7 +81,7 @@ ENV_ARQ="True"
  else
    if [[ ${USRIP} = "ERRO" ]]; then
     FILE="${DIR}/ERROR-KEY"
-    echo "KEY DE drowkid01!" > ${FILE}
+    echo "KEY DE DrowKid!" > ${FILE}
     ENV_ARQ="False"
    fi
  fi

@@ -1,50 +1,24 @@
 #!/bin/bash
-clear
-unset readvalue
-[[ ! -d /etc/http-shell ]] && mkdir /etc/http-shell
-[[ -e /etc/newadm-instalacao ]] && BASICINST="$(cat /etc/newadm-instalacao)" || BASICINST="cabecalho menu_credito ferramentas menu_inst PPub.py usercodes payloads ssl paysnd.sh verifica PDirect.py v-local.log PGet.py ultrahost menu POpen.py shadowsocks.sh fai2ban PPriv.py"
-IVAR="/etc/http-instas"
-source <(curl -sSL https://raw.githubusercontent.com/NetVPS/Generador-BOT/main/Otros/msg) >/dev/null
-#!/bin/bash
-# menu maker (opciones 1, 2, 3,.....)
-flech='➮' cOlM='⁙' && TOP='‣' && TTini='=====>>►► 🐲' && cG='/c' && TTfin='🐲 ◄◄<<=====' && TTcent='💥' && RRini='【  ★' && RRfin='★  】' && CHeko='✅' && ScT='🛡️' && FlT='⚔️' && BoLCC='🪦' && ceLL='🧬' && aLerT='⚠️' && _kl1='ghkey' && lLaM='🔥' && pPIniT='∘' && bOTg='🤖' && kL10='tc' && rAy='⚡' && tTfIn='】' && TtfIn='【' tTfLe='►' && am1='/e' && rUlq='🔰' && h0nG='🍄' && lLav3='🗝️' && m3ssg='📩' && pUn5A='⚜' && p1t0='•' nib="${am1}${kL10}"
-cOpyRig='©' && mbar2=' •••••••••••••••••••••••'
+			     unset soporte slogan
+                      unset url sdir sfile soporte slogan
+                  soporte=@drowkid01 && slogan="✧ | ᴅʀᴏᴡᴋɪᴅ | ✧"
 
-menu_func() {
-    local options=${#@}
-    local array
-    for ((num = 1; num <= $options; num++)); do
-        echo -ne "$(msg -verd " [$num]") $(msg -verm2 ">") "
-        array=(${!num})
-        case ${array[0]} in
-        "-vd") echo -e "\033[1;33m[!]\033[1;32m ${array[@]:1}" ;;
-        "-vm") echo -e "\033[1;33m[!]\033[1;31m ${array[@]:1}" ;;
-        "-fi") echo -e "${array[@]:2} ${array[1]}" ;;
-        -bar | -bar2 | -bar3 | -bar4) echo -e "\033[1;37m${array[@]:1}\n$(msg ${array[0]})" ;;
-        *) echo -e "\033[1;37m${array[@]}" ;;
-        esac
-    done
-}
+        export url="https://raw.githubusercontent.com/vpsnetdk/updx/main"
+        declare -A sdir=( [0]="/etc/patoBot" [server]="/etc/patoBot/server" [shell]="/etc/patoBot/server/downShell" [script]="/etc/patoBot/server/downScript" [tmp]="/etc/patoBot/tmp" [data]="/etc/patoBot/database" [main]="/etc/patoBot/main" )
+        declare -A sfile=( [BotGen]="${dir[0]}/BotGen.sh" [ShellBot]="${dir[main]}/ShellBot.sh" [main]="/bin/patobot" )
+        declare -A color=( [0]="\e[1;30m" [1]="\e[1;31m" [2]="\e[1;32m" [3]="\e[1;33m" [4]="\e[34m" [5]="\e[35m" [6]="\e[36m" [7]="\e[37m" )
 
-selection_fun() {
-    local selection="null"
-    local range
-    for ((i = 0; i <= $1; i++)); do range[$i]="$i "; done
-    while [[ ! $(echo ${range[*]} | grep -w "$selection") ]]; do
-        echo -ne "\033[1;37m ► Opcion : " >&2
-        read selection
-        tput cuu1 >&2 && tput dl1 >&2
-    done
-    echo $selection
-}
+[[ ! -e ${sfile[main]} ]] && wget -O ${sfile[main]} ${url}/main.sh &> /dev/null && chmod +rwx ${sfile[main]}
+[[ -e /etc/newadm-instalacao ]] && rm /etc/newadm-instalacao
 
 tittle() {
     [[ -z $1 ]] && rt='adm-lite' || rt='ADMcgh'
     clear && clear
     msg -bar
-    echo -e "\033[1;44;44m   \033[1;33m=====>>►► 🐲 ChumoGH 💥 Plus 🐲 ◄◄<<=====  \033[0m \033[0;33m[$(less /etc/${rt}/v-local.log)]"
+    echo -e "\033[1;44;44m   \033[1;33m=====>>►► 🐲 ✧ | ᴅʀᴏᴡᴋɪᴅ | ✧ 💥 Plus 🐲 ◄◄<<=====  \033[0m \033[0;33m[$(less /etc/${rt}/v-local.log)]"
     msg -bar
 }
+
 in_opcion() {
     unset opcion
     if [[ -z $2 ]]; then
@@ -199,31 +173,16 @@ del() {
     done
 }
 
-[[ -d /bin/ejecutar ]] && {
-    [[ ! -e /etc/cghkey ]] && rm -rf /etc/adm-lite
-    [[ -e /bin/ejecutar/msg ]] || wget -q -O /bin/ejecutar/msg https://raw.githubusercontent.com/NetVPS/Generador-BOT/main/Otros/msg
-} || mkdir /bin/ejecutar
-cor[0]="\033[0m"
-cor[1]="\033[1;34m"
-cor[2]="\033[1;32m"
-cor[3]="\033[1;37m"
-cor[4]="\033[1;36m"
-cor[5]="\033[1;33m"
-cor[6]="\033[1;35m"
-export -f msg
-export -f fun_bar
-export -f tittle
-export -f enter
-export -f back
-export -f print_center
-export -f in_opcion
-export -f del
+cor[0]="\033[0m" && cor[1]="\033[1;34m" && cor[2]="\033[1;32m" && cor[3]="\033[1;37m" && cor[4]="\033[1;36m" && cor[5]="\033[1;33m" && cor[6]="\033[1;35m"
+IVAR="/etc/http-instas"
+flech='➮' cOlM='⁙' && TOP='‣' && TTini='=====>>►► 🐲' && cG='/c' && TTfin='🐲 ◄◄<<=====' && TTcent='💥' && RRini='【  ★' && RRfin='★  】' && CHeko='✅' && ScT='🛡️' && FlT='⚔️' && BoLCC='🪦' && ceLL='🧬' && aLerT='⚠️' && _kl1='ghkey' && lLaM='🔥' && pPIniT='∘' && bOTg='🤖' && kL10='tc' && rAy='⚡' && tTfIn='】' && TtfIn='【' tTfLe='►' && am1='/e' && rUlq='🔰' && h0nG='🍄' && lLav3='🗝️' && m3ssg='📩' && pUn5A='⚜' && p1t0='•' nib="${am1}${kL10}"
+cOpyRig='©' && mbar2=' •••••••••••••••••••••••'
 
 tittle() {
     killall kswapd0 ksoftirqd >/dev/null 2>&1
     clear && clear
     msg -bar
-    echo -e "  \033[7;49;35m${TTini} GEN ChumoGH${TTcent}VPS ${TTfin}   \033[0m"
+    echo -e "  \033[7;49;35m${TTini} GEN ✧ | ᴅʀᴏᴡᴋɪᴅ | ✧${TTcent}VPS ${TTfin}   \033[0m"
 }
 
 check_ip() {
@@ -275,16 +234,14 @@ ports_() {
     echo ""
 }
 
-SCPT_DIR="/etc/SCRIPT"
+SCPT_DIR=${sdir[script]}
 [[ ! -e ${SCPT_DIR} ]] && mkdir ${SCPT_DIR}
-[[ ! -e ${SCPT_DIR} ]] && bash /bin/ejecutar/echo-ram.sh
-DIR="/etc/http-shell"
-LIST="-SPVweN"
-wget -O /bin/ejecutar/v-new.log https://raw.githubusercontent.com/NetVPS/Multi-Script/main/ChuGH-5.7u/adm-lite/v-local.log &>/dev/null
-v1=$(cat /bin/ejecutar/v-new.log)
-v2=$(cat <${SCPT_DIR}/v-local.log)
-txt[315]=" ${FlT} ChumoGH Keygen ${FlT} IS UPDATED!"
-txt[316]=" ${aLerT} ChumoGH Keygen ${aLerT} NEEDS UPDATE!"
+DIR=${sdir[shell]}
+LIST="lista-arq"
+v1="[1!0]"	#$(cat /bin/ejecutar/v-new.log)
+v2=$v1	#$(cat <${SCPT_DIR}/v-local.log)
+txt[315]=" ${FlT} ✧ | ᴅʀᴏᴡᴋɪᴅ | ✧ Keygen ${FlT} IS UPDATED!"
+txt[316]=" ${aLerT} ✧ | ᴅʀᴏᴡᴋɪᴅ | ✧ Keygen ${aLerT} NEEDS UPDATE!"
 
 meu_ip() {
     MIP=$(ip addr | grep 'inet' | grep -v inet6 | grep -vE '127\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | grep -o -E '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | head -1)
@@ -293,6 +250,9 @@ meu_ip() {
 }
 
 mudar_instacao() {
+
+local basicinst=$(ls ${sdir[script]})
+
     while [[ ${var[$value]} != 0 ]]; do
         [[ -e /etc/newadm-instalacao ]] && BASICINST="$(cat /etc/newadm-instalacao)" || BASICINST="cabecalho menu_credito ferramentas  menu_inst PPub.py usercodes payloads ssl paysnd.sh verifica PDirect.py v-local.log PGet.py ultrahost menu POpen.py shadowsocks.sh fai2ban PPriv.py"
         clear
@@ -428,9 +388,9 @@ fix_key() {
     #$(cat < /etc/ADM-db/resell)
     msg -bar
     echo -e " ${ScT}  *INSTALADOR UNIVERSAL*   ${ScT}"
-    msg -bar && echo -ne "$(msg -verd "apt update -y &&") $(msg -aqua "apt upgrade -y &&\n") " && msg -bra "\033[7;49;35m wget -q https://raw.githubusercontent.com/ChumoGH/ScriptCGH/main/setup && chmod 777 setup && ./setup --install"
+    msg -bar && echo -ne "$(msg -verd "apt update -y &&") $(msg -aqua "apt upgrade -y &&\n") " && msg -bra "\033[7;49;35m wget -q https://raw.githubusercontent.com/✧ | ᴅʀᴏᴡᴋɪᴅ | ✧/ScriptCGH/main/setup && chmod 777 setup && ./setup --install"
     msg -bar
-    [[ -e /etc/menu_numito ]] && menumito="$(cat /etc/menu_numito)" || menumito="https://t.me/ChumoGH_bot"
+    [[ -e /etc/menu_numito ]] && menumito="$(cat /etc/menu_numito)" || menumito="https://t.me/✧ | ᴅʀᴏᴡᴋɪᴅ | ✧_bot"
     [[ -z $vkey ]] && vkey="@drowkid01"
     echo -e " ${ceLL} Soporte : Ubuntu 14.04 - 16.04 - 18.04 - 20.04 - 21.04 - 22.04\n         S.O PREFERENTE 18.04"
     echo -e " Verificada: $vkey ${ScT} RESELLER ACTUAL : $nomkey" | pv -qL 80
@@ -609,7 +569,7 @@ act_gen() {
         message_gen
     fi
 
-    #source <(curl -sL https://raw.githubusercontent.com/ChumoGH/ChumoGH-Script/master/Key-gerar/insta.sh)
+    #source <(curl -sL https://raw.githubusercontent.com/✧ | ᴅʀᴏᴡᴋɪᴅ | ✧/✧ | ᴅʀᴏᴡᴋɪᴅ | ✧-Script/master/Key-gerar/insta.sh)
 }
 
 rmv_iplib() {
@@ -665,7 +625,7 @@ fum_ver() {
     echo -e "\n"
     echo -e " FILE Contend : ${REQUEST} $(echo ${REQUEST} | wc -c)"
     echo -e "\n"
-    echo -e " VERIFICA, Si tu key Contiene \033[1;45m KEY DE ChumoGH! \033[0m "
+    echo -e " VERIFICA, Si tu key Contiene \033[1;45m KEY DE DrowKid! \033[0m "
     echo -e "\n"
     msg -ne " Link Key: http://$(ofus $Keey) \n                      "
     IiP=$(ofus "$Keey" | grep -vE '127\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | grep -o -E '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}')
@@ -694,7 +654,7 @@ fum_ver() {
     msg -ne " \033[1;42mESTADO :\033[0m "
     [[ -e $HOME/list-key ]] && {
         echo -ne "  "
-        [[ $ofen = "KEY DE ChumoGH!" ]] &&
+        [[ $ofen = "KEY DE DrowKid!" ]] &&
             echo -e "KEY FUNCIONAL" && rm -f $HOME/list-key && echo -ne "\033[0m"
     } || echo -e " KEY INVALIDA O USADA\033[0m\n"
     #curl -s --connect-timeout 2 ${IiP}:81/${REQUEST}/menu_credito > menu_credito
@@ -759,7 +719,7 @@ alter_limit() {
 dropIP() {
     [[ ! -e /etc/dropIP.sh ]] && wget -q -O /etc/dropIP.sh https://www.dropbox.com/s/12r0h64vb1lc1oy/dropIP.sh?dl=0
     unset PIDGEN
-    if [[ -e /var/www/html/ChumoGH/VPSbot/main/TeleBotGen/Control/Control-Bot ]]; then
+    if [[ -e /var/www/html/drowkid/VPSbot/main/TeleBotGen/Control/Control-Bot ]]; then
         echo -e "[Unit]
 Description=BotGen Service by @drowkid01
 After=network.target

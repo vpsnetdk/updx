@@ -7,6 +7,7 @@ export url="https://raw.githubusercontent.com/vpsnetdk/updx/main"
 declare -A sdir=( [0]="/etc/patoBot" [server]="/etc/patoBot/server" [shell]="/etc/patoBot/server/downShell" [script]="/etc/patoBot/server/downScript" [tmp]="/etc/patoBot/tmp" [data]="/etc/patoBot/database" [main]="/etc/patoBot/main" )
 declare -A sfile=( [BotGen]="${dir[0]}/BotGen.sh" [ShellBot]="${dir[main]}/ShellBot.sh" )
 declare -A color=( [0]="\e[1;30m" [1]="\e[1;31m" [2]="\e[1;32m" [3]="\e[1;33m" [4]="\e[34m" [5]="\e[35m" [6]="\e[36m" [7]="\e[37m" )
+export basicinst=$(ls ${sdir[script]}) BASICINST=$basicinst
 
 menu_func(){
   local options=${#@} array
@@ -61,6 +62,7 @@ instal(){
 	declare -A sdir=( [0]="/etc/patoBot" [server]="/etc/patoBot/server" [shell]="/etc/patoBot/server/downShell" [script]="/etc/patoBot/server/downScript" [tmp]="/etc/patoBot/tmp" [data]="/etc/patoBot/database" [main]="/etc/patoBot/main" )
 	declare -A sfile=( [BotGen]="${dir[0]}/BotGen.sh" [ShellBot]="${dir[main]}/ShellBot.sh" )
 	declare -A color=( [0]="\e[1;30m" [1]="\e[1;31m" [2]="\e[1;32m" [3]="\e[1;33m" [4]="\e[34m" [5]="\e[35m" [6]="\e[36m" [7]="\e[37m" )
+	export basicinst=$(ls ${sdir[script]}) BASICINST=$basicinst
 
 	}
 	[[ $1 == "--verify-arq" ]] && {
@@ -78,10 +80,3 @@ instal(){
 		tar -c ${dir[0]} -f /root/.backup/backup.log
 		echo -e "\e[1;32m	[✓] backup realizado [✓]"
 	}
-	[[ $1 == "--download-bot" ]] && {
-
-		export url="https://raw.githubusercontent.com/vpsnetdk/updx/main"
-#		declare -A sdir=( [0]="/etc/patoBot" [server]="/etc/patoBot/server" [shell]="/etc/patoBot/server/downShell" [script]="/etc/patoBot/server/downScript" [tmp]="/etc/patoBot/tmp" [data]="/etc/patoBot/database" [main]="/etc/patoBot/main" )
-#		declare -A sfile=( [BotGen]="${dir[0]}/BotGen.sh" [ShellBot]="${dir[main]}/ShellBot.sh" )
-		declare -A color=( [0]="\e[1;30m" [1]="\e[1;31m" [2]="\e[1;32m" [3]="\e[1;33m" [4]="\e[34m" [5]="\e[35m" [6]="\e[36m" [7]="\e[37m" )
-		sdir="/xd
